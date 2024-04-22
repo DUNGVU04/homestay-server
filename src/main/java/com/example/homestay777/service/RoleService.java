@@ -3,7 +3,7 @@ package com.example.homestay777.service;
 import com.example.homestay777.exception.RoleAlreadyExistException;
 import com.example.homestay777.exception.UserAlreadyExistsException;
 import com.example.homestay777.model.Role;
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.repository.RoleRepository;
 import com.example.homestay777.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -50,8 +50,8 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public User removeUserFromRole(Long userId, Long roleId) {
-        Optional<User> user = userRepository.findById(userId);
+    public UserHotel removeUserFromRole(Long userId, Long roleId) {
+        Optional<UserHotel> user = userRepository.findById(userId);
         Optional<Role>  role = roleRepository.findById(roleId);
         if (role.isPresent() && role.get().getUsers().contains(user.get())){
             role.get().removeUserFromRole(user.get());
@@ -62,8 +62,8 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public User assignRoleToUser(Long userId, Long roleId) {
-        Optional<User> user = userRepository.findById(userId);
+    public UserHotel assignRoleToUser(Long userId, Long roleId) {
+        Optional<UserHotel> user = userRepository.findById(userId);
         Optional<Role>  role = roleRepository.findById(roleId);
         if (user.isPresent() && user.get().getRoles().contains(role.get())){
             throw new UserAlreadyExistsException(

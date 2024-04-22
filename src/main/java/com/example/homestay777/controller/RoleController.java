@@ -2,7 +2,7 @@ package com.example.homestay777.controller;
 
 import com.example.homestay777.exception.RoleAlreadyExistException;
 import com.example.homestay777.model.Role;
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.service.IRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -48,13 +48,13 @@ public class RoleController {
     }
 
     @PostMapping("/remove-user-from-role")
-    public User removeUserFromRole(
+    public UserHotel removeUserFromRole(
             @RequestParam("userId") Long userId,
             @RequestParam("roleId") Long roleId){
         return roleService.removeUserFromRole(userId, roleId);
     }
     @PostMapping("/assign-user-to-role")
-    public User assignUserToRole(
+    public UserHotel assignUserToRole(
             @RequestParam("userId") Long userId,
             @RequestParam("roleId") Long roleId){
         return roleService.assignRoleToUser(userId, roleId);

@@ -1,6 +1,6 @@
 package com.example.homestay777.controller;
 
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<List<User>> getUsers(){
+    public ResponseEntity<List<UserHotel>> getUsers(){
 
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.FOUND);
     }
@@ -32,7 +32,7 @@ public class UserController {
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email){
         try{
-            User theUser = userService.getUser(email);
+            UserHotel theUser = userService.getUser(email);
             return ResponseEntity.ok(theUser);
         }catch (UsernameNotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

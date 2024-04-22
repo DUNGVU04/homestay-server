@@ -1,6 +1,6 @@
 package com.example.homestay777.security.user;
 
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class HotelUserDetails implements UserDetails {
     private String password;
     private Collection<GrantedAuthority> authorities;
 
-    public static HotelUserDetails buildUserDetails(User user){
+    public static HotelUserDetails buildUserDetails(UserHotel user){
         List<GrantedAuthority> authorities = user.getRoles()
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))

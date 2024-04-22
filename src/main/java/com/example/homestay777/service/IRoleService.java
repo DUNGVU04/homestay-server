@@ -1,7 +1,7 @@
 package com.example.homestay777.service;
 
 import com.example.homestay777.model.Role;
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface IRoleService {
     void deleteRole(Long id);
     Role findByName(String name);
 
-    User removeUserFromRole(Long userId, Long roleId);
-    User assignRoleToUser(Long userId, Long roleId);
+    UserHotel removeUserFromRole(Long userId, Long roleId);
+    UserHotel assignRoleToUser(Long userId, Long roleId);
     Role removeAllUsersFromRole(Long roleId);
 }

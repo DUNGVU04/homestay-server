@@ -1,6 +1,6 @@
 package com.example.homestay777.controller;
 import com.example.homestay777.exception.UserAlreadyExistsException;
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.request.LoginRequest;
 import com.example.homestay777.response.JwtResponse;
 import com.example.homestay777.security.jwt.JwtUtils;
@@ -32,7 +32,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/register-user")
-    public ResponseEntity<?> registerUser(@RequestBody User user){
+    public ResponseEntity<?> registerUser(@RequestBody UserHotel user){
         try{
             userService.registerUser(user);
             return ResponseEntity.ok("Registration successful!");

@@ -1,6 +1,6 @@
 package com.example.homestay777.security.user;
 
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +18,7 @@ public class HotelUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email)
+        UserHotel user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return HotelUserDetails.buildUserDetails(user);
     }

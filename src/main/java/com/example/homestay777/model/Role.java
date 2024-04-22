@@ -25,18 +25,18 @@ public class Role {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-    private Collection<User> users = new HashSet<>();
+    private Collection<UserHotel> users = new HashSet<>();
 
     public Role(String name) {
         this.name = name;
     }
 
-    public void assignRoleToUser(User user){
+    public void assignRoleToUser(UserHotel user){
         user.getRoles().add(this);
         this.getUsers().add(user);
     }
 
-    public void removeUserFromRole(User user){
+    public void removeUserFromRole(UserHotel user){
         user.getRoles().remove(this);
         this.getUsers().remove(user);
 
@@ -44,7 +44,7 @@ public class Role {
 
     public void removeAllUsersFromRole(){
         if (this.getUsers() != null){
-            List<User> roleUsers = this.getUsers().stream().toList();
+            List<UserHotel> roleUsers = this.getUsers().stream().toList();
             roleUsers.forEach(this :: removeUserFromRole);
         }
     }

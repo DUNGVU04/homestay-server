@@ -2,7 +2,7 @@ package com.example.homestay777.service;
 
 import com.example.homestay777.exception.UserAlreadyExistsException;
 import com.example.homestay777.model.Role;
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 import com.example.homestay777.repository.RoleRepository;
 import com.example.homestay777.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -26,7 +26,7 @@ public class UserService implements IUserService {
     private final RoleRepository roleRepository;
 
     @Override
-    public User registerUser(User user) {
+    public UserHotel registerUser(UserHotel user) {
         if (userRepository.existsByEmail(user.getEmail())){
             throw new UserAlreadyExistsException(user.getEmail() + " already exists");
         }
@@ -38,14 +38,14 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<UserHotel> getUsers() {
         return userRepository.findAll();
     }
 
     @Transactional
     @Override
     public void deleteUser(String email) {
-        User theUser = getUser(email);
+        UserHotel theUser = getUser(email);
         if (theUser != null){
             userRepository.deleteByEmail(email);
         }
@@ -53,7 +53,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User getUser(String email) {
+    public UserHotel getUser(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }

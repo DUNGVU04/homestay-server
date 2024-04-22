@@ -1,6 +1,6 @@
 package com.example.homestay777.service;
 
-import com.example.homestay777.model.User;
+import com.example.homestay777.model.UserHotel;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 
 public interface IUserService {
-    User registerUser(User user);
-    List<User> getUsers();
+    UserHotel registerUser(UserHotel user);
+    List<UserHotel> getUsers();
     void deleteUser(String email);
-    User getUser(String email);
+    UserHotel getUser(String email);
 }
